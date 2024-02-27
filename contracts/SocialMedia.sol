@@ -34,7 +34,7 @@ interface INFTSFactory {
     ) external returns (uint tokenId);
 }
 
-contract DecentralizedSocialMedia {
+contract SocialMedia {
     address nftAddress;
 
     address owner;

@@ -1,22 +1,17 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
 
-  const lockedAmount = ethers.parseEther("0.001");
+  const NFTSFactory = await ethers.deployContract("NFTSFactory");
+  await NFTSFactory.waitForDeployment();
 
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+  console.log(`NFTSFactory is deployed to ${NFTSFactory.target}`);
 
-  await lock.waitForDeployment();
 
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  const socialMedia = await ethers.deployContract("SocialMedia", [NFTSFactory.target]);
+  await socialMedia.waitForDeployment();
+
+  console.log(`SocialMedia is deployed to ${socialMedia.target}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -25,3 +20,6 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+// NFTSFactory is deployed to 0x1DCBd5DB7D4F49Eb44D3Ef3e52D41B4Ea7684B9e
+// SocialMedia is deployed to 0xA98Be0a3a63A3245635b1685Fb80E717E9bc6E71
