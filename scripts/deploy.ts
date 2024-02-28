@@ -21,5 +21,5 @@ main().catch((error) => {
   process.exitCode = 1;
 });
 
-// NFTSFactory is deployed to 0x1DCBd5DB7D4F49Eb44D3Ef3e52D41B4Ea7684B9e
-// SocialMedia is deployed to 0xA98Be0a3a63A3245635b1685Fb80E717E9bc6E71
+// NFTSFactory is deployed to 0xC4c4FC115795F04B2Cc69a56369F414CEdAdEEc0;
+// SocialMedia is deployed to 0x6D92B9b83CECD903FA051DAC194FDB3e97417716;

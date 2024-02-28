@@ -1,6 +1,6 @@
-## Verified and Deployed on: https://sepolia.etherscan.io/address/0xa98be0a3a63a3245635b1685fb80e717e9bc6e71
+## Verified and Deployed on: https://sepolia.etherscan.io/address/0x6D92B9b83CECD903FA051DAC194FDB3e97417716#code
 
-Deployed Address on Sepolia Network: SocialMedia is deployed to 0xA98Be0a3a63A3245635b1685Fb80E717E9bc6E71
+Deployed Address on Sepolia Network: SocialMedia is deployed to 0x6D92B9b83CECD903FA051DAC194FDB3e97417716
 
 
 #### Question: Develop a decentralized social media platform where users can create and share content in the form of NFTs representing multimedia assets such as images, videos, and audio clips. The platform should incorporate advanced features such as user authentication, role-based access control (RBAC), and content moderation.

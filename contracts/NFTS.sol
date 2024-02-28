@@ -3,19 +3,20 @@ pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract NFTS is ERC721, ERC721URIStorage, Ownable {
+contract NFTS is ERC721, ERC721URIStorage {
     uint256 private _nextTokenId;
 
     constructor(
-        address initialOwner
-    ) ERC721("NFTS", "NFT") Ownable(initialOwner) {}
+        address initialOwner,
+        string memory name,
+        string memory symbol
+    ) ERC721(name, symbol) {}
 
     function safeMint(
         address to,
         string memory uri
-    ) external onlyOwner returns (uint tokenId) {
+    ) public returns (uint tokenId) {
         tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);

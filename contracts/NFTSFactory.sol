@@ -16,9 +16,11 @@ contract NFTSFactory {
     mapping(address => address) public userContract;
 
     function createNFTContract(
-        address _initialOwner
+        address _initialOwner,
+        string memory name,
+        string memory symbol
     ) external returns (NFTS newContract_, uint length_) {
-        newContract_ = new NFTS(_initialOwner);
+        newContract_ = new NFTS(_initialOwner, name, symbol);
 
         userContract[msg.sender] = address(newContract_);
 

@@ -25,7 +25,9 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 interface INFTSFactory {
     function createNFTContract(
-        address _initialOwner
+        address _initialOwner,
+        string memory name,
+        string memory symbol
     ) external returns (NFTS newContract_, uint length_);
 
     function mint(
@@ -104,11 +106,7 @@ contract SocialMedia {
 
     event GroupCreated(uint256 id, string name);
 
-    function registerUser(
-        string memory _username,
-        string memory _bio,
-        string memory _profilePicture
-    ) public {
+    function registerUser(string memory _username, string memory _bio) public {
         require(bytes(_username).length > 0, "Username cannot be empty");
 
         require(msg.sender != address(0), "Address zero detected");
@@ -124,13 +122,12 @@ contract SocialMedia {
         newUser.id = _id;
         newUser.username = _username;
         newUser.bio = _bio;
-        newUser.profilePicture = _profilePicture;
 
         userid++;
 
         usersArray.push(newUser);
 
-        INFTSFactory(nftAddress).createNFTContract(msg.sender);
+        INFTSFactory(nftAddress).createNFTContract(msg.sender, _bio, _username);
     }
 
     function grantRole(Role _roleType, address _account) external {
