@@ -13,7 +13,7 @@ async function main() {
 
   const uri = "ipfs/QmbLw2oDhFrivbiqWStZj9zwjHFD5ETiAazVsREUzPjJyw";
 
-  const tx2 = await socialMedia.createPost("this is a cute cat", uri);
+  const tx2 = await socialMedia.createPost("another cute cat", uri);
 
   await tx2.wait();
 

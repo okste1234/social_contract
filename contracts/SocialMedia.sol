@@ -65,11 +65,11 @@ contract SocialMedia {
 
     struct Post {
         uint id;
-        string tokenUri;
+        string caption;
         string content;
         bool isVerified;
         address owner;
-        string comments;
+        string[] comments;
         uint likes;
         uint postCount;
     }
@@ -171,7 +171,7 @@ contract SocialMedia {
 
     // Users Create Post from NFT factory contract
     function createPost(
-        string memory _content,
+        string memory _caption,
         string memory _tokenUri
     ) public {
         require(msg.sender != address(0), "Address zero detected");
@@ -186,8 +186,8 @@ contract SocialMedia {
         Post storage post = userPosts[msg.sender][id];
 
         post.id = id;
-        post.content = _content;
-        post.tokenUri = _tokenUri;
+        post.caption = _caption;
+        post.content = _tokenUri;
         post.owner = msg.sender;
         post.postCount = post.postCount + 1;
 
@@ -239,7 +239,7 @@ contract SocialMedia {
 
         Post storage post = userPosts[_postOwner][_postId];
 
-        post.comments = _comment;
+        post.comments.push(_comment);
 
         hasCommented[msg.sender][_postId] = true;
     }
